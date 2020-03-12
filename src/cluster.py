@@ -19,12 +19,12 @@ class Cluster:
             drones[labels[i]].append(self.obj_coor[i])
         return(drones)
 
-    def send_command(self):
+    def send_command(self,client1,client2):
         obj=self.assign()
         
         for i in range(len(obj[0])):
-            print("go "+str(obj[0][i][0])+" "+str(obj[0][i][1]))
+            client1.send_message("go "+str(obj[0][i][0])+" "+str(obj[0][i][1]))
         for j in range(len(obj[1])):
-            print("go "+str(obj[0][j][0])+" "+str(obj[0][j][1]))
+            client2.send_message("go "+str(obj[0][j][0])+" "+str(obj[0][j][1]))
         
 
