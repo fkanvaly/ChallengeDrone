@@ -1,7 +1,7 @@
-from client import Client
-from server import Server
+from src.client import Client
+from src.server import Server
 import _thread
-from My_drone import My_drone
+from src.My_drone import My_drone
 from time import sleep
 import numpy
 import cv2
