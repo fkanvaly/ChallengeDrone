@@ -7,10 +7,15 @@ from detection import YOLODetector
 from server import Server
 from drone_guiding import DroneGuider
 
+from config import WAITING_TIME
+
+
+DRONE_HEIGHT = 5
+
 
 def main():
     
-    drone_guider = DroneGuider()
+    drone_guider = DroneGuider(DRONE_HEIGHT, step_left=5)
     
     my_server = Server()
     mapper = Mapping()
@@ -18,15 +23,14 @@ def main():
     
     drone_guider.first_step()
     
-    height = drone_guider.drone.get_height()
-    print("la hauteur est de " + str(height))
-    
     stream = drone_guider.get_stream()
     
     while True:
         
         drone_guider.step()
-        height = drone_guider.drone.get_height()
+        height = 0.1 * drone_guider.drone.get_height()
+        
+        sleep(WAITING_TIME)
         
         ret, frame = stream.read()
         
