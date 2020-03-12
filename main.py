@@ -1,4 +1,4 @@
-from easyTello.easytello import Tello
+from easytello import Tello
 from time import sleep
 import cv2
 
