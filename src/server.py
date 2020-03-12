@@ -31,10 +31,10 @@ class Server:
             while len(recv_data)<size:
                 part = sock.recv(BUFF_SIZE)
                 recv_data += part 
-            myfile = open("%s_" % self.imgcounter + filename, 'wb')
+            myfile = open(filename, 'wb')
             myfile.write(recv_data)
             self.Received_messages += [self.basename % self.imgcounter]
-           # print(self.Received_messages)
+            print(self.Received_messages)
             self.imgcounter += 1
             repr("GOT IMAGE")
            # print("echoing", repr("GOT IMAGE"), "to", data.addr)

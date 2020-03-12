@@ -10,3 +10,5 @@ frame = np.zeros((640,480,3))
 
 cv2.imwrite("0.png", frame)
 my_client.send_img("0.png")
+cv2.imwrite("1.png", frame)
+my_client.send_img("1.png")
