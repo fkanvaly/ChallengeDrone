@@ -52,7 +52,7 @@ class Server:
             if recv_data:
                 data.outb += recv_data
                 self.Received_messages += [recv_data.decode("utf-8")]
-              #  print(self.Received_messages)
+                print(self.Received_messages)
             else:
                # print("closing connection to", data.addr)
                 self.sel.unregister(sock)

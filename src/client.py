@@ -3,6 +3,7 @@ import socket
 import selectors
 import types
 import time
+from time import sleep
 
 
 class Client:
@@ -49,8 +50,9 @@ class Client:
             if not data.outb and data.messages:
                 data.outb = data.messages.pop(0)
             if data.outb:
-                repr(data.outb)
-                #print("sending", repr(data.outb), "to connection", data.connid)
+                # repr(data.outb)
+                sleep(0.001)
+                # print("sending", repr(data.outb), "to connection", data.connid)
                 sent = sock.send(data.outb)  # Should be ready to write
                 data.outb = data.outb[sent:]
 

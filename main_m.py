@@ -41,6 +41,7 @@ def main():
         cv2.imwrite(str(image_counter) + ".png", frame)
         kanvaly_client.send_img(str(image_counter) + ".png")
         kanvaly_client.send_message(str(height))
+        image_counter += 1
 
     sleep(3)
         
