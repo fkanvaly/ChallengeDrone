@@ -22,7 +22,7 @@ class Server:
         events = selectors.EVENT_READ | selectors.EVENT_WRITE
         self.sel.register(conn, events, data=data)
 
-    def receive_img(self, key, mask, size):
+    def receive_img(self, key, mask, size, filename):
         sock = key.fileobj
         data = key.data
         if mask & selectors.EVENT_READ: 
@@ -31,7 +31,7 @@ class Server:
             while len(recv_data)<size:
                 part = sock.recv(BUFF_SIZE)
                 recv_data += part 
-            myfile = open(self.basename % self.imgcounter, 'wb')
+            myfile = open("%s_" % self.imgcounter + filename, 'wb')
             myfile.write(recv_data)
             self.Received_messages += [self.basename % self.imgcounter]
            # print(self.Received_messages)
@@ -67,7 +67,8 @@ class Server:
     def service_connection(self, key, mask):
         if len(self.Received_messages) !=0 and self.Received_messages[-1].split()[0] == "sending_image" :
             size = int(self.Received_messages[-1].split()[1])
-            self.receive_img(key, mask, size)
+            filename = self.Received_messages[-1].split()[2]
+            self.receive_img(key, mask, size, filename)
         else:
             self.receive_msg(key, mask)
 

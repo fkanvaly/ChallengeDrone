@@ -76,7 +76,7 @@ class Client:
         myfile = open(filename, 'rb')
         image_bytes = myfile.read()
         size = len(image_bytes)
-        notif = "sending_image %s" %size
+        notif = "sending_image %s %s" %(size,filename)
         messages = [bytes(notif, 'utf-8'), image_bytes]
         self.start_connections(messages)
         try:
