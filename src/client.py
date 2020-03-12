@@ -51,7 +51,7 @@ class Client:
                 data.outb = data.messages.pop(0)
             if data.outb:
                 # repr(data.outb)
-                sleep(0.001)
+                sleep(0.01)
                 # print("sending", repr(data.outb), "to connection", data.connid)
                 sent = sock.send(data.outb)  # Should be ready to write
                 data.outb = data.outb[sent:]
