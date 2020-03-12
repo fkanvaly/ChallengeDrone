@@ -7,10 +7,7 @@ from detection import YOLODetector
 from server import Server
 from drone_guiding import DroneGuider
 
-from config import WAITING_TIME
-
-
-DRONE_HEIGHT = 5
+from config import WAITING_TIME, DRONE_HEIGHT
 
 
 def main():
